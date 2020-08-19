@@ -21,6 +21,25 @@ final class WeatherListController: UIViewController, UITableViewDelegate, UITabl
         
         weatherListView.tableView.delegate = self
         weatherListView.tableView.dataSource = self
+        
+        fetchWeather()
+    }
+    
+    func fetchWeather() {
+        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=Lahore&appid=0fa72fbc73a3dd5d5c84e056ec2787de&units=metric") else {
+            return
+        }
+        
+        let resource = Resource<Weather>(url: url)
+        
+        Webservice().load(resource: resource) { result in
+            switch result {
+                case .success(let weather):
+                    print(weather)
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
     }
 }
 
