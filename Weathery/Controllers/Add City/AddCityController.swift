@@ -8,14 +8,15 @@
 
 import UIKit
 
-protocol CityAddedDelegate: class {
-    func didAdd(_ weather: Weather)
+protocol AddWeatherDelegate: class {
+    func didAdd(_ weatherViewModel: WeatherViewModel)
 }
 
 final class AddCityContoller: UIViewController {
     private let addCityView = AddCityView()
+    private var addCityViewModel = AddCityViewModel()
     
-    weak var delegate: CityAddedDelegate?
+    weak var delegate: AddWeatherDelegate?
     
     override func loadView() {
         view = addCityView
@@ -25,6 +26,7 @@ final class AddCityContoller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bindViewModel()
     }
     
     @objc func saveTapped() {
@@ -45,11 +47,18 @@ final class AddCityContoller: UIViewController {
             
             switch result {
                 case .success(let weather):
-                    self.delegate?.didAdd(weather)
+                    let weatherViewModel = WeatherViewModel(weather: weather)
+                    self.delegate?.didAdd(weatherViewModel)
                     self.dismiss(animated: true)
                 case .failure(let error):
                     print(error.localizedDescription)
             }
+        }
+    }
+    
+    private func bindViewModel() {
+        addCityViewModel.city.bind {
+            print($0)
         }
     }
 }

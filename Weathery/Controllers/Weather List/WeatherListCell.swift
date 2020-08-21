@@ -23,8 +23,9 @@ final class WeatherListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupCell(with city: String) {
-        cityLabel.text = city
+    func setupCell(with weatherViewModel: WeatherViewModel) {
+        cityLabel.text = weatherViewModel.city
+        temperatureLabel.text = "\(weatherViewModel.temperature)"
     }
     
     private func setupCellView() {

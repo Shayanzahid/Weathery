@@ -45,12 +45,12 @@ extension WeatherListController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return weatherListViewModel.numberOfRows(in: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell") as! WeatherListCell
-        cell.setupCell(with: "Lahore")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as! WeatherListCell
+        cell.setupCell(with: weatherListViewModel.weatherViewModel(at: indexPath.row))
         
         return cell
     }
@@ -60,9 +60,10 @@ extension WeatherListController {
     }
 }
 
-extension WeatherListController: CityAddedDelegate {
-    func didAdd(_ weather: Weather) {
-        print(weather)
+extension WeatherListController: AddWeatherDelegate {
+    func didAdd(_ weatherViewModel: WeatherViewModel) {
+        weatherListViewModel.addWeatherViewModel(weatherViewModel)
+        weatherListView.tableView.reloadData()
     }
 }
 
