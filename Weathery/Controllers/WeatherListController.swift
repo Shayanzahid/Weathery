@@ -11,6 +11,8 @@ import UIKit
 final class WeatherListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private let weatherListView = WeatherListView()
     
+    private var weatherListViewModel = WeatherListViewModel()
+    
     override func loadView() {
         view = weatherListView
         weatherListView.weatherListController = self
@@ -21,32 +23,15 @@ final class WeatherListController: UIViewController, UITableViewDelegate, UITabl
         
         weatherListView.tableView.delegate = self
         weatherListView.tableView.dataSource = self
-        
-        fetchWeather()
-    }
-    
-    func fetchWeather() {
-        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=Lahore&appid=0fa72fbc73a3dd5d5c84e056ec2787de&units=metric") else {
-            return
-        }
-        
-        let resource = Resource<Weather>(url: url)
-        
-        Webservice().load(resource: resource) { result in
-            switch result {
-                case .success(let weather):
-                    print(weather)
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
-        }
     }
 }
 
 extension WeatherListController {
     @objc func plusTapped() {
-        let addCityController = UINavigationController(rootViewController: AddCityContoller())
-        present(addCityController, animated: true)
+        let addCityController = AddCityContoller()
+        addCityController.delegate = self
+        let addCityNavController = UINavigationController(rootViewController: addCityController)
+        present(addCityNavController, animated: true)
     }
     
     @objc func settingsTapped() {
@@ -72,6 +57,12 @@ extension WeatherListController {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+}
+
+extension WeatherListController: CityAddedDelegate {
+    func didAdd(_ weather: Weather) {
+        print(weather)
     }
 }
 

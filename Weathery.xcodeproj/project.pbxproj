@@ -20,6 +20,7 @@
 		47EB8AE124ED5CD100A4EABC /* WeatherListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8AE024ED5CD100A4EABC /* WeatherListCell.swift */; };
 		47EB8AE424ED6B9600A4EABC /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8AE324ED6B9600A4EABC /* Webservice.swift */; };
 		47EB8AE724ED6C3200A4EABC /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8AE624ED6C3200A4EABC /* Weather.swift */; };
+		47EB8AEA24EFBC8200A4EABC /* WeatherListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8AE924EFBC8200A4EABC /* WeatherListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		47EB8AE024ED5CD100A4EABC /* WeatherListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCell.swift; sourceTree = "<group>"; };
 		47EB8AE324ED6B9600A4EABC /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		47EB8AE624ED6C3200A4EABC /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		47EB8AE924EFBC8200A4EABC /* WeatherListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		47EB8AA724ED389100A4EABC /* Weathery */ = {
 			isa = PBXGroup;
 			children = (
+				47EB8AE824EFBC5E00A4EABC /* View Models */,
 				47EB8AE524ED6C2200A4EABC /* Models */,
 				47EB8AE224ED6B8900A4EABC /* Services */,
 				47EB8ADE24ED431600A4EABC /* Controllers */,
@@ -173,6 +176,14 @@
 				47EB8AE624ED6C3200A4EABC /* Weather.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		47EB8AE824EFBC5E00A4EABC /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				47EB8AE924EFBC8200A4EABC /* WeatherListViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +325,7 @@
 				47EB8ADB24ED419400A4EABC /* AddCityController.swift in Sources */,
 				47EB8AD924ED3BC000A4EABC /* WeatherListView.swift in Sources */,
 				47EB8AE124ED5CD100A4EABC /* WeatherListCell.swift in Sources */,
+				47EB8AEA24EFBC8200A4EABC /* WeatherListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
