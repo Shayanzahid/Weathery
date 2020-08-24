@@ -29,7 +29,7 @@ final class AddCityContoller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bindViewModel()
+        setupSubscribers()
     }
     
     @objc func saveTapped() {
@@ -39,22 +39,17 @@ final class AddCityContoller: UIViewController {
         }
     }
     
-    private func bindViewModel() {
+    private func setupSubscribers() {
         
-        addCityViewModel.weatherPublisher.sink(receiveCompletion: { error in
-            print(error)
-        }) { [weak self] weather in
+        addCityViewModel.weatherPublisher.sink { [weak self] weather in
             guard let self = self else { return }
-
             let weatherViewModel = WeatherViewModel(weather: weather)
             self.delegate?.didAdd(weatherViewModel)
             self.dismiss(animated: true)
         }.store(in: &cancellables)
         
-//        addCityViewModel.weatherPublisher.flatMap { value in
-//            Just(value).tryMap { value
-//
-//            }
-//        }
+        addCityViewModel.errorPublisher.sink { (error) in
+                print(error)
+        }.store(in: &cancellables)
     }
 }
