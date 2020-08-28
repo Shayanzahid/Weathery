@@ -23,6 +23,14 @@
 		47EB8AEA24EFBC8200A4EABC /* WeatherListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8AE924EFBC8200A4EABC /* WeatherListViewModel.swift */; };
 		47EB8AEF24EFF8A400A4EABC /* AddCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8AEE24EFF8A400A4EABC /* AddCityViewModel.swift */; };
 		47EB8AF124EFF9D300A4EABC /* Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8AF024EFF9D300A4EABC /* Binder.swift */; };
+		47EB8AF424F78BD200A4EABC /* Weathery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8AF224F78BD200A4EABC /* Weathery.xcdatamodeld */; };
+		47EB8AF724F798BE00A4EABC /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8AF624F798BE00A4EABC /* Persistence.swift */; };
+		47EB8AFB24F7A2DE00A4EABC /* WeatherEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8AF924F7A2DE00A4EABC /* WeatherEntity+CoreDataClass.swift */; };
+		47EB8AFC24F7A2DE00A4EABC /* WeatherEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8AFA24F7A2DE00A4EABC /* WeatherEntity+CoreDataProperties.swift */; };
+		47EB8AFF24F7A33F00A4EABC /* WeatherEntity-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8AFE24F7A33F00A4EABC /* WeatherEntity-Extension.swift */; };
+		47EB8B0224F7DFD300A4EABC /* SettingsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8B0124F7DFD300A4EABC /* SettingsListController.swift */; };
+		47EB8B0424F7E00B00A4EABC /* SettingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8B0324F7E00B00A4EABC /* SettingsListView.swift */; };
+		47EB8B0624F7E6FD00A4EABC /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB8B0524F7E6FD00A4EABC /* SettingsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +73,14 @@
 		47EB8AE924EFBC8200A4EABC /* WeatherListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewModel.swift; sourceTree = "<group>"; };
 		47EB8AEE24EFF8A400A4EABC /* AddCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewModel.swift; sourceTree = "<group>"; };
 		47EB8AF024EFF9D300A4EABC /* Binder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binder.swift; sourceTree = "<group>"; };
+		47EB8AF324F78BD200A4EABC /* Weathery.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Weathery.xcdatamodel; sourceTree = "<group>"; };
+		47EB8AF624F798BE00A4EABC /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		47EB8AF924F7A2DE00A4EABC /* WeatherEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		47EB8AFA24F7A2DE00A4EABC /* WeatherEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		47EB8AFE24F7A33F00A4EABC /* WeatherEntity-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherEntity-Extension.swift"; sourceTree = "<group>"; };
+		47EB8B0124F7DFD300A4EABC /* SettingsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListController.swift; sourceTree = "<group>"; };
+		47EB8B0324F7E00B00A4EABC /* SettingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListView.swift; sourceTree = "<group>"; };
+		47EB8B0524F7E6FD00A4EABC /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +131,8 @@
 		47EB8AA724ED389100A4EABC /* Weathery */ = {
 			isa = PBXGroup;
 			children = (
+				47EB8AF824F7A2AC00A4EABC /* Core Data Models */,
+				47EB8AF524F798AA00A4EABC /* Helpers */,
 				47EB8AED24EFD91A00A4EABC /* Supporting Files */,
 				47EB8AE824EFBC5E00A4EABC /* View Models */,
 				47EB8AE524ED6C2200A4EABC /* Models */,
@@ -123,6 +141,7 @@
 				47EB8AB124ED389300A4EABC /* Assets.xcassets */,
 				47EB8AB324ED389300A4EABC /* LaunchScreen.storyboard */,
 				47EB8AB624ED389300A4EABC /* Info.plist */,
+				47EB8AF224F78BD200A4EABC /* Weathery.xcdatamodeld */,
 			);
 			path = Weathery;
 			sourceTree = "<group>";
@@ -148,6 +167,7 @@
 		47EB8ADE24ED431600A4EABC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				47EB8B0024F7DFBE00A4EABC /* Settings */,
 				47EB8AEB24EFD8D600A4EABC /* Weather List */,
 				47EB8AEC24EFD8F700A4EABC /* Add City */,
 			);
@@ -175,6 +195,7 @@
 			children = (
 				47EB8AE924EFBC8200A4EABC /* WeatherListViewModel.swift */,
 				47EB8AEE24EFF8A400A4EABC /* AddCityViewModel.swift */,
+				47EB8B0524F7E6FD00A4EABC /* SettingsViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -206,6 +227,41 @@
 				47EB8AF024EFF9D300A4EABC /* Binder.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		47EB8AF524F798AA00A4EABC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				47EB8AF624F798BE00A4EABC /* Persistence.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		47EB8AF824F7A2AC00A4EABC /* Core Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				47EB8AFD24F7A31C00A4EABC /* Weather Entity */,
+			);
+			path = "Core Data Models";
+			sourceTree = "<group>";
+		};
+		47EB8AFD24F7A31C00A4EABC /* Weather Entity */ = {
+			isa = PBXGroup;
+			children = (
+				47EB8AF924F7A2DE00A4EABC /* WeatherEntity+CoreDataClass.swift */,
+				47EB8AFA24F7A2DE00A4EABC /* WeatherEntity+CoreDataProperties.swift */,
+				47EB8AFE24F7A33F00A4EABC /* WeatherEntity-Extension.swift */,
+			);
+			path = "Weather Entity";
+			sourceTree = "<group>";
+		};
+		47EB8B0024F7DFBE00A4EABC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				47EB8B0124F7DFD300A4EABC /* SettingsListController.swift */,
+				47EB8B0324F7E00B00A4EABC /* SettingsListView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,18 +394,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47EB8B0224F7DFD300A4EABC /* SettingsListController.swift in Sources */,
 				47EB8AAD24ED389100A4EABC /* WeatherListController.swift in Sources */,
+				47EB8AF424F78BD200A4EABC /* Weathery.xcdatamodeld in Sources */,
 				47EB8ADD24ED41B800A4EABC /* AddCityView.swift in Sources */,
+				47EB8AF724F798BE00A4EABC /* Persistence.swift in Sources */,
 				47EB8AE424ED6B9600A4EABC /* Webservice.swift in Sources */,
 				47EB8AA924ED389100A4EABC /* AppDelegate.swift in Sources */,
 				47EB8AE724ED6C3200A4EABC /* Weather.swift in Sources */,
 				47EB8AF124EFF9D300A4EABC /* Binder.swift in Sources */,
 				47EB8AEF24EFF8A400A4EABC /* AddCityViewModel.swift in Sources */,
+				47EB8AFC24F7A2DE00A4EABC /* WeatherEntity+CoreDataProperties.swift in Sources */,
+				47EB8AFB24F7A2DE00A4EABC /* WeatherEntity+CoreDataClass.swift in Sources */,
 				47EB8AAB24ED389100A4EABC /* SceneDelegate.swift in Sources */,
 				47EB8ADB24ED419400A4EABC /* AddCityController.swift in Sources */,
+				47EB8AFF24F7A33F00A4EABC /* WeatherEntity-Extension.swift in Sources */,
+				47EB8B0624F7E6FD00A4EABC /* SettingsViewModel.swift in Sources */,
 				47EB8AD924ED3BC000A4EABC /* WeatherListView.swift in Sources */,
 				47EB8AE124ED5CD100A4EABC /* WeatherListCell.swift in Sources */,
 				47EB8AEA24EFBC8200A4EABC /* WeatherListViewModel.swift in Sources */,
+				47EB8B0424F7E00B00A4EABC /* SettingsListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,6 +734,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		47EB8AF224F78BD200A4EABC /* Weathery.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				47EB8AF324F78BD200A4EABC /* Weathery.xcdatamodel */,
+			);
+			currentVersion = 47EB8AF324F78BD200A4EABC /* Weathery.xcdatamodel */;
+			path = Weathery.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 47EB8A9D24ED389100A4EABC /* Project object */;
 }

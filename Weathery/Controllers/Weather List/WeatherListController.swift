@@ -23,6 +23,8 @@ final class WeatherListController: UIViewController, UITableViewDelegate, UITabl
         
         weatherListView.tableView.delegate = self
         weatherListView.tableView.dataSource = self
+        
+        weatherListViewModel.fetchPersistedWeatherViewModels()
     }
 }
 
@@ -35,7 +37,9 @@ extension WeatherListController {
     }
     
     @objc func settingsTapped() {
-        
+        let settingsController = SettingsListController()
+        let settingsNavController = UINavigationController(rootViewController: settingsController)
+        present(settingsNavController, animated: true)
     }
 }
 
@@ -50,7 +54,8 @@ extension WeatherListController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as! WeatherListCell
-        cell.setupCell(with: weatherListViewModel.weatherViewModel(at: indexPath.row))
+        let weatherViewModel = weatherListViewModel.weatherViewModel(at: indexPath.row)
+        cell.setupCell(with: weatherViewModel)
         
         return cell
     }

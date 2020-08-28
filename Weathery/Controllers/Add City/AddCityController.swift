@@ -43,13 +43,15 @@ final class AddCityContoller: UIViewController {
         
         addCityViewModel.weatherPublisher.sink { [weak self] weather in
             guard let self = self else { return }
-            let weatherViewModel = WeatherViewModel(weather: weather)
-            self.delegate?.didAdd(weatherViewModel)
-            self.dismiss(animated: true)
-        }.store(in: &cancellables)
-        
-        addCityViewModel.errorPublisher.sink { (error) in
-                print(error)
+            
+            switch weather {
+                case .success(let weather):
+                    let weatherViewModel = WeatherViewModel(weather: weather)
+                    self.delegate?.didAdd(weatherViewModel)
+                    self.dismiss(animated: true)
+                case .failure(let error):
+                    print("Oops! \(error)")
+            }
         }.store(in: &cancellables)
     }
 }

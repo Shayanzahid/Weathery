@@ -10,8 +10,7 @@ import Foundation
 import Combine
 
 class AddCityViewModel: ObservableObject {
-    let weatherPublisher = PassthroughSubject<Weather, Never>()
-    let errorPublisher = PassthroughSubject<APIErrors, Never>()
+    let weatherPublisher = PassthroughSubject<Result<Weather, APIErrors>, Never>()
     
     func fetchWeather(for city: String) {
         guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=0fa72fbc73a3dd5d5c84e056ec2787de&units=metric") else {
@@ -25,9 +24,9 @@ class AddCityViewModel: ObservableObject {
             
             switch result {
                 case .success(let weather):
-                    self.weatherPublisher.send(weather)
+                    self.weatherPublisher.send(.success(weather))
                 case .failure(let error):
-                    self.errorPublisher.send(error)
+                    self.weatherPublisher.send(.failure(error))
             }
         }
     }

@@ -10,11 +10,17 @@ import Foundation
 
 // MARK: - WeatherListViewModel represents the whole screen
 
-struct WeatherListViewModel {
+class WeatherListViewModel {
     private var weatherViewModels = [WeatherViewModel]()
     
-    mutating func addWeatherViewModel(_ vm: WeatherViewModel) {
+    func addWeatherViewModel(_ vm: WeatherViewModel) {
         weatherViewModels.append(vm)
+        vm.persist()
+    }
+    
+    func fetchPersistedWeatherViewModels() {
+        let weathers = Persistence.shared.fetch(WeatherEntity.self)
+        weatherViewModels = weathers.map { WeatherViewModel(weather: $0.toWeather) }
     }
     
     func numberOfRows(in section: Int) -> Int {
@@ -45,5 +51,12 @@ struct WeatherViewModel {
     
     var temperatureMax: Double {
         return weather.main.tempMax
+    }
+    
+    func persist() {
+        let weatherEntity = WeatherEntity(context: Persistence.shared.context)
+        weatherEntity.name = city
+        weatherEntity.temperature = temperature
+        Persistence.shared.save()
     }
 }
