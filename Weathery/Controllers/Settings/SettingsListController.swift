@@ -7,10 +7,19 @@
 //
 
 import UIKit
+import Combine
+
+protocol SettingsChangedDelegate: class {
+    func didSelect(_ settingsViewModel: SettingsViewModel)
+}
 
 final class SettingsListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private let settingsListView = SettingsListView()
     private let settingsListViewModel = SettingsListViewModel()
+    
+    weak var delegate: SettingsChangedDelegate?
+    
+    let publisher = PassthroughSubject<SettingsViewModel, Never>()
     
     override func loadView() {
         view = settingsListView
@@ -25,11 +34,28 @@ final class SettingsListController: UIViewController, UITableViewDelegate, UITab
     }
     
     @objc func doneTapped() {
+        delegate?.didSelect(<#T##settingsViewModel: SettingsViewModel##SettingsViewModel#>)
         dismiss(animated: true)
     }
 }
 
 extension SettingsListController {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
+        cell?.selectionStyle = .none
+        
+        let settingsViewModel = settingsListViewModel.settingsViewModel(at: indexPath.row)
+        publisher.send(settingsViewModel)
+        
+        UserDefaults.standard.save(value: settingsViewModel.temperatureFormatType, forKey: .temperatureFormat)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .none
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -39,7 +65,9 @@ extension SettingsListController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.deq
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath)
+        let settingsViewModel = settingsListViewModel.settingsViewModel(at: indexPath.row)
+        cell.textLabel?.text = settingsViewModel.temperatureFormatType
+        return cell
     }
 }

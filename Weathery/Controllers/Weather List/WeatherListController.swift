@@ -7,15 +7,22 @@
 //
 
 import UIKit
+import Combine
 
 final class WeatherListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private let weatherListView = WeatherListView()
     
     private var weatherListViewModel = WeatherListViewModel()
+    private var cancellables = Set<AnyCancellable>()
     
     override func loadView() {
         view = weatherListView
         weatherListView.weatherListController = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("APPEARED")
     }
     
     override func viewDidLoad() {
@@ -38,6 +45,10 @@ extension WeatherListController {
     
     @objc func settingsTapped() {
         let settingsController = SettingsListController()
+        settingsController.publisher.sink { settingsViewModel in
+            print(settingsViewModel)
+        }.store(in: &cancellables)
+        
         let settingsNavController = UINavigationController(rootViewController: settingsController)
         present(settingsNavController, animated: true)
     }
